@@ -55,6 +55,7 @@ class SpotDetailViewController: UIViewController {
         }
     }
 }
+ 
 extension SpotDetailViewController: GMSAutocompleteViewControllerDelegate {
     
     // Handle the user's selection.
