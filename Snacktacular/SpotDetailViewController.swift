@@ -61,7 +61,7 @@ class SpotDetailViewController: UIViewController {
     }
     
     func updateMap() {
-        mapView.removeAnnotation(mapView!.annotations as! MKAnnotation)
+        mapView.removeAnnotations(mapView.annotations)
         mapView.addAnnotation(spot)
         mapView.setCenter(spot.coordinate, animated: true)
     }
