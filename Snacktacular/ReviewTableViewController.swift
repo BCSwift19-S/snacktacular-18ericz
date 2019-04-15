@@ -10,10 +10,10 @@ import UIKit
 
 class ReviewTableViewController: UITableViewController {
     @IBOutlet weak var nameLabel: UILabel!
-    @IBOutlet weak var addressLabel: UIView!
+    @IBOutlet weak var addressLabel: UILabel!
     @IBOutlet weak var postedByLabel: UILabel!
     @IBOutlet weak var reviewTitle: UITextField!
-    @IBOutlet weak var rewviewView: UITextView!
+    @IBOutlet weak var reviewView: UITextView!
     @IBOutlet weak var cancelBarButton: UIBarButtonItem!
     @IBOutlet weak var saveBarButton: UIBarButtonItem!
     @IBOutlet weak var deleteButton: UIButton!
@@ -21,7 +21,8 @@ class ReviewTableViewController: UITableViewController {
     @IBOutlet weak var reviewDateLabel: UILabel!
     @IBOutlet var starButtonCollection: [UIButton]!
     
-    
+    var spot: Spot!
+    var review: Review!
     var rating = 0 {
         didSet {
             for starButton in starButtonCollection {
@@ -29,6 +30,7 @@ class ReviewTableViewController: UITableViewController {
                 starButton.setImage(image, for: .normal)
                 
             }
+            review.rating = rating
         }
     }
     
@@ -37,6 +39,18 @@ class ReviewTableViewController: UITableViewController {
         let tap = UITapGestureRecognizer(target: self.view, action: #selector(UIView.endEditing(_:)))
         tap.cancelsTouchesInView = false
         self.view.addGestureRecognizer(tap)
+        
+        guard let spot = spot else{
+            print("ERROR THERE WAS NO VALID SPOT")
+            return
+        }
+        nameLabel.text = spot.name
+        addressLabel.text = spot.address
+        
+        
+        if review == nil {
+            review = Review()
+        }
     }
     func leaveViewController() {
         let isPresentingInAddMode = presentingViewController is UINavigationController
@@ -52,6 +66,17 @@ class ReviewTableViewController: UITableViewController {
     }
     
     @IBAction func saveButtonPressed(_ sender: Any) {
+        review.title = reviewTitle.text!
+        review.text = reviewView.text!
+        
+    
+        review.saveData(spot: spot) { success in
+            if success {
+                self.leaveViewController()
+            }else {
+                print("*** ERROR COULDNT LEAVE VIEW CONTROLLER")
+            }
+        }
     }
     @IBAction func returnTitleDonePressed(_ sender: Any) {
     }
@@ -62,6 +87,6 @@ class ReviewTableViewController: UITableViewController {
     
     @IBAction func deleteButtonPresed(_ sender: Any) {
     }
-    @IBAction func revuewTutkeChanged(_ sender: Any) {
+    @IBAction func reviewTutkeChanged(_ sender: Any) {
     }
 }
