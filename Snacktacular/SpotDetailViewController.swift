@@ -19,21 +19,42 @@ class SpotDetailViewController: UIViewController {
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var mapView: MKMapView!
+    @IBOutlet weak var saveBarButton: UIBarButtonItem!
+    @IBOutlet weak var cancelBarButton: UIBarButtonItem!
     
     var spot: Spot!
     let regionDistance: CLLocationDistance = 750 // 750 meters
     var locationManager: CLLocationManager!
     var currentLocation: CLLocation!
     
+    
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        let tap = UITapGestureRecognizer(target: self.view, action: #selector(UIView.endEditing(_:)))
+        tap.cancelsTouchesInView = false
+        self.view.addGestureRecognizer(tap)
         //
         //mapView.delegate = self
         
         if spot == nil {
             spot = Spot()
             getLocation()
+            
+            nameField.addBorder(width: 0.5, radius: 5.0, color: .black)
+            addressField.addBorder(width: 0.5, radius: 5.0, color: .black)
+        } else{
+            nameField.isEnabled = false
+            addressField.isEnabled = false
+            nameField.backgroundColor = UIColor.clear
+            
+            saveBarButton.title = ""
+            cancelBarButton.title = ""
+            
+            navigationController?.setToolbarHidden(true, animated: true)
+            
         }
         
         let region = MKCoordinateRegion(center: spot.coordinate, latitudinalMeters: regionDistance, longitudinalMeters: regionDistance)
@@ -65,6 +86,20 @@ class SpotDetailViewController: UIViewController {
         mapView.addAnnotation(spot)
         mapView.setCenter(spot.coordinate, animated: true)
     }
+    
+    @IBAction func textFieldEditingChanged(_ sender: UITextField) {
+        saveBarButton.isEnabled = !(nameField.text == "")
+        
+    }
+    
+    @IBAction func textFieldReturnPressed(_ sender: UITextField) {
+        sender.resignFirstResponder()
+        spot.name = nameField.text!
+        spot.address = addressField.text!
+       updateUserInterface()
+    }
+    
+    
     @IBAction func lookupPlacePressed(_ sender: UIBarButtonItem) {
         let autocompleteController = GMSAutocompleteViewController()
         autocompleteController.delegate = self
