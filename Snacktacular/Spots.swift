@@ -18,19 +18,5 @@ class Spots{
         db = Firestore.firestore()
     }
     
-    func loadData(completed: @escaping () -> ()){
-        db.collection("spots").addSnapshotListener{ (querySnapshot, error) in
-            guard error == nil else {
-                print("**** THERE IS AN ERROR ADDING SNPSHOT")
-                return completed()
-            }
-            self.spotArray = []
-            for document in querySnapshot!.documents {
-                let spot = Spot(dictionary: document.data())
-                spot.documentID = document.documentID
-                self.spotArray.append(spot)
-            }
-            completed()
-        }
-    }
+    
 }
