@@ -22,6 +22,8 @@
 		E22848352264EDD800F75479 /* ReviewTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E22848342264EDD800F75479 /* ReviewTableViewController.swift */; };
 		E22848372264F34E00F75479 /* Review.swift in Sources */ = {isa = PBXBuildFile; fileRef = E22848362264F34E00F75479 /* Review.swift */; };
 		E22848392264F9E400F75479 /* Reviews.swift in Sources */ = {isa = PBXBuildFile; fileRef = E22848382264F9E400F75479 /* Reviews.swift */; };
+		E228483B2264FED800F75479 /* Photo.swift in Sources */ = {isa = PBXBuildFile; fileRef = E228483A2264FED800F75479 /* Photo.swift */; };
+		E228483D2264FF3700F75479 /* Photos.swift in Sources */ = {isa = PBXBuildFile; fileRef = E228483C2264FF3700F75479 /* Photos.swift */; };
 		E28E0001225155BD00892321 /* Spots.swift in Sources */ = {isa = PBXBuildFile; fileRef = E28E0000225155BD00892321 /* Spots.swift */; };
 		E28EFFFF2251551F00892321 /* Spot.swift in Sources */ = {isa = PBXBuildFile; fileRef = E28EFFFE2251551F00892321 /* Spot.swift */; };
 		E2C231FF22516EB200933131 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = E2C231FE22516EB200933131 /* GoogleService-Info.plist */; };
@@ -47,6 +49,8 @@
 		E22848342264EDD800F75479 /* ReviewTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewTableViewController.swift; sourceTree = "<group>"; };
 		E22848362264F34E00F75479 /* Review.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Review.swift; sourceTree = "<group>"; };
 		E22848382264F9E400F75479 /* Reviews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reviews.swift; sourceTree = "<group>"; };
+		E228483A2264FED800F75479 /* Photo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Photo.swift; sourceTree = "<group>"; };
+		E228483C2264FF3700F75479 /* Photos.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Photos.swift; sourceTree = "<group>"; };
 		E28E0000225155BD00892321 /* Spots.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Spots.swift; sourceTree = "<group>"; };
 		E28EFFFE2251551F00892321 /* Spot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Spot.swift; sourceTree = "<group>"; };
 		E2C231FE22516EB200933131 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -90,6 +94,8 @@
 				E28EFFFE2251551F00892321 /* Spot.swift */,
 				E22848382264F9E400F75479 /* Reviews.swift */,
 				E22848362264F34E00F75479 /* Review.swift */,
+				E228483C2264FF3700F75479 /* Photos.swift */,
+				E228483A2264FED800F75479 /* Photo.swift */,
 				3E8390E1206597F600512DEA /* SpotsListViewController.swift */,
 				3E0F960920659D9000AE450D /* SpotsTableViewCell.swift */,
 				3E0F960B2065A17500AE450D /* SpotDetailViewController.swift */,
@@ -319,8 +325,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E228483B2264FED800F75479 /* Photo.swift in Sources */,
 				E22848392264F9E400F75479 /* Reviews.swift in Sources */,
 				3E8390E2206597F600512DEA /* SpotsListViewController.swift in Sources */,
+				E228483D2264FF3700F75479 /* Photos.swift in Sources */,
 				3E0F96102065AC1A00AE450D /* SpotPhotosCollectionViewCell.swift in Sources */,
 				3E0F960C2065A17500AE450D /* SpotDetailViewController.swift in Sources */,
 				E22848312264E1B200F75479 /* Doule+RoundTo.swift in Sources */,
