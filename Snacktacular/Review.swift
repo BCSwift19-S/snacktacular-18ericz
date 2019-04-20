@@ -57,7 +57,9 @@ class Review {
                     completed(false)
                 }else {
                     print("*** DOCUMENT UPDATED")
-                    completed(true)
+                    spot.updateAverageRating {
+                        completed(true)
+                    }
                 }
                 
             }
@@ -69,7 +71,9 @@ class Review {
                     completed(false)
                 }else {
                     print("*** DOCUMENT CREATED")
-                    completed(true)
+                    spot.updateAverageRating {
+                        completed(true)
+                    }
                 }
             }
         }
@@ -84,7 +88,9 @@ class Review {
                     print("****Error deleting review document ID")
                     completed(false)
                 } else{
-                    completed(true)
+                    spot.updateAverageRating {
+                        completed(true)
+                    }
                 }
                 
         }
