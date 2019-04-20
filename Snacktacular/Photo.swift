@@ -15,6 +15,9 @@ class Photo {
     var postedBy: String
     var date: Date
     var documentUUID: String
+    var dictionary: [String:Any] {
+        return ["description":description, "postedBy":postedBy,"date":date]
+    }
     
     init(image: UIImage, description: String, postedBy: String, date: Date, documentUUID: String) {
         self.image = image
@@ -29,5 +32,53 @@ class Photo {
     convenience init() {
         let postedBy = Auth.auth().currentUser?.email ?? "Unknown user"
         self.init(image: UIImage(), description: "", postedBy: postedBy, date: Date(), documentUUID: "")
+    }
+    
+    func saveData(spot: Spot, completed: @escaping (Bool) -> ()) {
+        let db = Firestore.firestore()
+        //Grab User ID
+        
+        let storage = Storage.storage()
+        guard let photoData = self.image.jpegData(compressionQuality: 0.5) else {
+            print("ERROR")
+            return completed(false)
+        }
+        
+        let uploadMetaData = StorageMetadata()
+        uploadMetaData.contentType = "image/jpeg"
+        
+        
+        documentUUID = UUID().uuidString
+        let storageRef = storage.reference().child(spot.documentID).child(self.documentUUID)
+        let uploadTask = storageRef.putData(photoData, metadata: uploadMetaData) {metadata, error in
+            guard error == nil else{
+                print("ERROR during .putData storage")
+                return
+            }
+        }
+        uploadTask.observe(.success) { (snapshot) in
+            let dataToSave = self.dictionary
+            
+            let ref = db.collection("spots").document(spot.documentID).collection("photos").document(self.documentUUID)
+            ref.setData(dataToSave) {(error) in
+                if let error = error {
+                    print("***ERROR UPDATING DOCUMENT in spot \(spot.documentID) \(error.localizedDescription)")
+                    completed(false)
+                }else {
+                    print("*** DOCUMENT UPDATED")
+                    completed(true)
+                }
+                
+            }
+        }
+        uploadTask.observe(.failure) { (snapshot) in
+            if let error = snapshot.error {
+                print("** ERROR: Upload failed")
+                
+        }
+        return completed(false)
+            
+        
+        }
     }
 }
