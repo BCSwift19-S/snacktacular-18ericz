@@ -77,6 +77,9 @@ class SpotDetailViewController: UIViewController {
         reviews.loadData(spot: spot) {
             self.tableView.reloadData()
         }
+        photos.loadData(spot: spot){
+            self.collectionView.reloadData()
+        }
     }
     func showAlert(title: String, message: String) {
         let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
@@ -319,13 +322,9 @@ extension SpotDetailViewController: UINavigationControllerDelegate, UIImagePicke
         photo.image = info[UIImagePickerController.InfoKey.originalImage] as! UIImage
         
         dismiss(animated: true) {
-            photo.saveData(spot: self.spot, completed: { (success) in
-                if success {
-                    self.photos.photoArray.append(photo)
-                    self.collectionView.reloadData()
-                }
-            })
-            self.collectionView.reloadData()
+            photo.saveData(spot: self.spot) { (success) in
+                
+            }
         }
     
     }
