@@ -99,6 +99,7 @@ class Spot: NSObject, MKAnnotation {
                     completed(false)
                 }else {
                     print("*** DOCUMENT CREATED")
+                    self.documentID = ref!.documentID
                     completed(true)
                 }
             }
