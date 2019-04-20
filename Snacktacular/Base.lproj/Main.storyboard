@@ -660,7 +660,7 @@
                                                         <constraint firstAttribute="width" constant="51" id="vP7-SX-npi"/>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" name="AvenirNextCondensed-DemiBold" family="Avenir Next Condensed" pointSize="17"/>
-                                                    <nil key="textColor"/>
+                                                    <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="7iv-k5-4SB">
@@ -744,12 +744,12 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" leftItemsSupplementBackButton="YES" id="yM8-Co-jSY">
-                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="2Zk-jY-l1D">
+                        <barButtonItem key="leftBarButtonItem" title="Cancel" id="2Zk-jY-l1D">
                             <connections>
                                 <action selector="cancelButtonPressed:" destination="0bi-rE-mru" id="HGi-TA-XRA"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="QIz-9p-6zx">
+                        <barButtonItem key="rightBarButtonItem" title="Save" id="QIz-9p-6zx">
                             <connections>
                                 <action selector="saveButtonPressed:" destination="0bi-rE-mru" id="P8u-KF-A94"/>
                             </connections>
@@ -764,8 +764,8 @@
                         <outlet property="nameLabel" destination="ehb-qz-aXP" id="uSi-sV-hTa"/>
                         <outlet property="postedByLabel" destination="ISc-rA-9I3" id="NBa-ER-VBy"/>
                         <outlet property="reviewDateLabel" destination="Iq2-lw-hoV" id="VLG-WD-8da"/>
-                        <outlet property="reviewTitle" destination="TGC-y5-Rha" id="N7v-p2-zjQ"/>
-                        <outlet property="reviewView" destination="7iv-k5-4SB" id="gDr-wy-bEq"/>
+                        <outlet property="reviewTextView" destination="7iv-k5-4SB" id="gDr-wy-bEq"/>
+                        <outlet property="reviewTitleField" destination="TGC-y5-Rha" id="N7v-p2-zjQ"/>
                         <outlet property="saveBarButton" destination="QIz-9p-6zx" id="S66-at-xBB"/>
                         <outletCollection property="starButtonCollection" destination="nw6-wV-HgO" collectionClass="NSMutableArray" id="mTh-cw-VV9"/>
                         <outletCollection property="starButtonCollection" destination="HsX-3C-d4s" collectionClass="NSMutableArray" id="Yof-Rm-SIU"/>
