@@ -142,6 +142,13 @@ class ReviewTableViewController: UITableViewController {
     }
     
     @IBAction func deleteButtonPresed(_ sender: Any) {
+        review.deleteData(spot: spot) { (success) in
+            if success {
+                self.leaveViewController()
+            }else{
+                print("ERROR: Delete Unsuccessful")
+            }
+        }
     }
     @IBAction func reviewTutkeChanged(_ sender: Any) {
     }
